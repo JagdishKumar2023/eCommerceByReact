@@ -1,28 +1,29 @@
-.popular {
+.new-collection {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   height: 90vh;
-  margin-top: 200px;
+  margin-bottom: 700px; /*Important*/
 }
 
-.popular h1 {
+.new-collection h1 {
   color: #171717;
   font-size: 25px;
   font-weight: 600;
   color: rgb(210, 82, 103);
 }
 
-.popular hr {
+.new-collection hr {
   width: 200px;
-  height: 1px;
-  border-radius: 7px;
+  height: 6px;
+  border-radius: 10px;
   background: #252525;
 }
 
-.popular-item {
+.collection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 50px;
-  display: flex;
   gap: 30px;
 }
