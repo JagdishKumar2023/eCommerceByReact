@@ -35,6 +35,7 @@
   justify-content: center;
   gap: 3px;
   cursor: pointer;
+  /* background-color: rgb(35, 187, 187); */
 }
 
 .nav-menu hr {
