@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import ShopCategory from "./Pages/ShopCategory";
+// import Signup from "./Pages/Signup";
 import Loginsignup from "./Pages/Loginsignup";
 import Shop from "./Pages/Shop";
 import Product from "./Pages/Product";
@@ -34,6 +35,7 @@ function App() {
           </Route>
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Loginsignup />} />
+          {/* <Route path="/signup" element={<Signup />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>

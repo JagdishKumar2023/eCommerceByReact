@@ -1,27 +1,107 @@
-import React from "react";
-import "./CSS/Loginsignup.css";
+import React, { useState } from "react";
 
-const Loginsignup = () => {
+const LoginSignupPage = () => {
+  const [action, setAction] = useState("Login");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    const storedPassword = localStorage.getItem(username);
+    if (storedPassword === password) {
+      setLoggedIn(true);
+      alert("Login successful!");
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+
+  const handleSignup = () => {
+    if (!username || !password || !confirmPassword) {
+      alert("Please fill in all fields");
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+    if (localStorage.getItem(username)) {
+      alert("Username already exists");
+      return;
+    }
+    localStorage.setItem(username, password);
+    alert("Signup successful!");
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    setUsername("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
   return (
-    <div className="loginsignup">
-      <div className="loginsignup-container">
-        <h1>Sign up</h1>
-        <div className="loginsignup-fields">
-          <input type="text" placeholder="Your name" />
-          <input type="email" placeholder="Email address" />
-          <input type="password" placeholder="Password" />
+    <div>
+      {loggedIn ? (
+        <div>
+          <p>Welcome, {username}!</p>
+          <button onClick={handleLogout}>Logout</button>
         </div>
-        <button>Continue</button>
-        <p className="loginsignup-login">
-          Already have an accout? <span>Login here</span>
-        </p>
-        <div className="login-signup-agree">
-          <input type="checkbox" name="" id="" />
-          <p>By continuing, I Agree to the terms of use & privacy policy</p>
+      ) : (
+        <div>
+          <h2
+            className={action}
+            onClick={() => {
+              setAction("Sign up");
+            }}
+          >
+            Login
+          </h2>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={handleLogin}>Login</button>
+
+          <h2
+            onClick={() => {
+              setAction("Login");
+            }}
+          >
+            Signup
+          </h2>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <button onClick={handleSignup}>Signup</button>
         </div>
-      </div>
+      )}
     </div>
   );
 };
 
-export default Loginsignup;
+export default LoginSignupPage;
