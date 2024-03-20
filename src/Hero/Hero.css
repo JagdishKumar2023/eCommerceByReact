@@ -161,4 +161,18 @@
   .hero-right {
     display: none;
   }
+  .hero-left h2 {
+    font-size: 18px;
+  }
+  .hero-left p {
+    width: 50px;
+  }
+  .hero-hand-icon img {
+    font-size: 50px;
+  }
+  .hero-latest-btn {
+    width: 220px;
+    height: 45px;
+    font-size: 14px;
+  }
 }
