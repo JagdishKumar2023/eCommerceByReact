@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const LoginSignupPage = () => {
-  const [action, setAction] = useState("Login");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -50,14 +49,7 @@ const LoginSignupPage = () => {
         </div>
       ) : (
         <div>
-          <h2
-            className={action}
-            onClick={() => {
-              setAction("Sign up");
-            }}
-          >
-            Login
-          </h2>
+          <h2>Login</h2>
           <input
             type="text"
             placeholder="Username"
@@ -72,13 +64,7 @@ const LoginSignupPage = () => {
           />
           <button onClick={handleLogin}>Login</button>
 
-          <h2
-            onClick={() => {
-              setAction("Login");
-            }}
-          >
-            Signup
-          </h2>
+          <h2>Signup</h2>
           <input
             type="text"
             placeholder="Username"

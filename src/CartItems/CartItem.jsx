@@ -25,11 +25,11 @@ export const CartItem = () => {
               <div className="cartitems-format cartitems-format-main">
                 <img src={e.image} alt="" className="carticon-product-icon" />
                 <p>{e.name}</p>
-                <p>${e.new_price}</p>
+                <p>{e.new_price}0</p>
                 <button className="cartitems-quantity">
                   {cartItems[e.id]}
                 </button>
-                <p>${e.new_price * cartItems[e.id]}</p>
+                <p>{e.new_price * cartItems[e.id]}0</p>
                 <img
                   src={remove_icon}
                   alt=""
@@ -48,22 +48,20 @@ export const CartItem = () => {
       <div className="cartitems-down">
         <div className="cartitems-total">
           <h1>cart Totals</h1>
-          <>
-            <div className="cartitems-total-item">
-              <p>SubTotal</p>
-              <p>${getTotalCartAmount()}</p>
-            </div>
-            <hr />
-            <div className="cartitems-total-item">
-              <p>Shipping Fee</p>
-              <p>Free</p>
-            </div>
-            <hr />
-            <div className="cartitems-total-item">
-              <h3>Total</h3>
-              <h3>${getTotalCartAmount()}</h3>
-            </div>
-          </>
+          <div className="cartitems-total-item">
+            <p>SubTotal</p>
+            <p>${getTotalCartAmount()}</p>
+          </div>
+          <hr />
+          <div className="cartitems-total-item">
+            <p>Shipping Fee</p>
+            <p>Free</p>
+          </div>
+          <hr />
+          <div className="cartitems-total-item">
+            <h3>Total</h3>
+            <h3>${getTotalCartAmount()}</h3>
+          </div>
           <button>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cartitems-promocode">
