@@ -25,11 +25,11 @@ export const CartItem = () => {
               <div className="cartitems-format cartitems-format-main">
                 <img src={e.image} alt="" className="carticon-product-icon" />
                 <p>{e.name}</p>
-                <p>{e.new_price}0</p>
+                <p>{e.new_price}</p>
                 <button className="cartitems-quantity">
                   {cartItems[e.id]}
                 </button>
-                <p>{e.new_price * cartItems[e.id]}0</p>
+                <p>{e.new_price * cartItems[e.id]}</p>
                 <img
                   src={remove_icon}
                   alt=""
@@ -50,7 +50,7 @@ export const CartItem = () => {
           <h1>cart Totals</h1>
           <div className="cartitems-total-item">
             <p>SubTotal</p>
-            <p>${getTotalCartAmount()}</p>
+            <p>{getTotalCartAmount()}</p>
           </div>
           <hr />
           <div className="cartitems-total-item">
@@ -60,7 +60,7 @@ export const CartItem = () => {
           <hr />
           <div className="cartitems-total-item">
             <h3>Total</h3>
-            <h3>${getTotalCartAmount()}</h3>
+            <h3>{getTotalCartAmount()}</h3>
           </div>
           <button>PROCEED TO CHECKOUT</button>
         </div>

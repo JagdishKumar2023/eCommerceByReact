@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./CSS/Loginsignup.css";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -6,46 +8,55 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSignup = () => {
-    // Check if username already exists in localStorage
-    if (localStorage.getItem(username)) {
-      alert("Username already exists");
+    if (!username || !password || !confirmPassword) {
+      alert("Please fill in all fields");
       return;
     }
-
-    // Check if password and confirmPassword match
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
 
-    // Store user data in localStorage
-    localStorage.setItem(username, password);
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+    if (users[username]) {
+      alert("Username already exists");
+      return;
+    }
 
-    // Optionally, you can set loggedIn state or redirect to login page
+    users[username] = password;
+    localStorage.setItem("users", JSON.stringify(users));
     alert("Signup successful!");
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
-      <button onClick={handleSignup}>Signup</button>
+    <div className="mainContainer">
+      <div className="signup-form">
+        <h2 className="mainHeading">Signup</h2>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button onClick={handleSignup} className="pink-button">
+          Signup
+        </button>
+        <p>
+          Already have an account? <Link to="/login">Login here!</Link>
+        </p>
+      </div>
     </div>
   );
 };

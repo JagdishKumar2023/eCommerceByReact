@@ -1,93 +1,45 @@
 import React, { useState } from "react";
+import "./CSS/Loginsignup.css";
+import { Link } from "react-router-dom";
 
-const LoginSignupPage = () => {
+const Loginsignup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = () => {
-    const storedPassword = localStorage.getItem(username);
-    if (storedPassword === password) {
-      setLoggedIn(true);
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+    if (users[username] === password) {
       alert("Login successful!");
     } else {
       alert("Invalid username or password");
     }
   };
 
-  const handleSignup = () => {
-    if (!username || !password || !confirmPassword) {
-      alert("Please fill in all fields");
-      return;
-    }
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-    if (localStorage.getItem(username)) {
-      alert("Username already exists");
-      return;
-    }
-    localStorage.setItem(username, password);
-    alert("Signup successful!");
-  };
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-    setUsername("");
-    setPassword("");
-    setConfirmPassword("");
-  };
-
   return (
-    <div>
-      {loggedIn ? (
-        <div>
-          <p>Welcome, {username}!</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          <h2>Login</h2>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button onClick={handleLogin}>Login</button>
-
-          <h2>Signup</h2>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <button onClick={handleSignup}>Signup</button>
-        </div>
-      )}
+    <div className="mainContainer">
+      <div className="login-form">
+        <h2 className="mainHeading">Login</h2>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleLogin} className="special-button">
+          Login
+        </button>
+        <p>
+          Don't have an account? <Link to="/signup">Sign up here!</Link>
+        </p>
+      </div>
     </div>
   );
 };
 
-export default LoginSignupPage;
+export default Loginsignup;

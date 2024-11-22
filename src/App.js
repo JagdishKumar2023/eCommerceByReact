@@ -10,6 +10,7 @@ import Footer from "./Footer/Footer";
 import men_banner from "./Assets/banner_mens.png";
 import women_banner from "./Assets/banner_women.png";
 import kid_banner from "./Assets/banner_kids.png";
+import Signup from "./Pages/Signup";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Shop />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/login" element={<Loginsignup />} />
+          <Route path="/signup" element={<Signup />} />
+
           <Route
             path="/mens"
             element={<ShopCategory category="men" banner={men_banner} />}
