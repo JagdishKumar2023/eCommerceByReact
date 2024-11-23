@@ -18,10 +18,11 @@ export const CartItem = () => {
         <p>Remove</p>
       </div>
       <hr />
+
       {all_product.map((e) => {
         if (cartItems[e.id] > 0) {
           return (
-            <>
+            <React.Fragment key={e.id}>
               <div className="cartitems-format cartitems-format-main">
                 <img src={e.image} alt="" className="carticon-product-icon" />
                 <p>{e.name}</p>
@@ -40,17 +41,18 @@ export const CartItem = () => {
                 />
               </div>
               <hr />
-            </>
+            </React.Fragment>
           );
         }
         return null;
       })}
+
       <div className="cartitems-down">
         <div className="cartitems-total">
-          <h1>cart Totals</h1>
+          <h1>Cart Totals</h1>
           <div className="cartitems-total-item">
             <p>SubTotal</p>
-            <p>{getTotalCartAmount()}</p>
+            <b>{getTotalCartAmount()}</b>
           </div>
           <hr />
           <div className="cartitems-total-item">
@@ -60,14 +62,14 @@ export const CartItem = () => {
           <hr />
           <div className="cartitems-total-item">
             <h3>Total</h3>
-            <h3>{getTotalCartAmount()}</h3>
+            <b>{getTotalCartAmount()}</b>
           </div>
           <button>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cartitems-promocode">
-          <p>If you have a promo code, Enter it here</p>
+          <p>If you have a promo code, enter it here</p>
           <div className="cartitems-promobox">
-            <input type="text" placeholder="promo code" />
+            <input type="text" placeholder="Promo code" />
             <button>Submit</button>
           </div>
         </div>
