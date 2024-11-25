@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="hero-left">
-        <h2>NEW ARRIVALS ONLY</h2>
+        <h2 style={{ color: "rgb(235,66,63)" }}>NEW ARRIVALS ONLY</h2>
         <div className="headingContainer">
           <div className="hero-hand-icon">
             <p style={{ color: "rgb(19,185,201)" }}>New</p>

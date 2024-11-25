@@ -23,7 +23,7 @@ export const Navbar = () => {
         <Link to="/">
           <img src={logo} alt="" />
         </Link>
-        <p>SHOPPER</p>
+        <p style={{ cursor: "pointer" }}>SHOPPER</p>
       </div>
       <img
         className="nav-dropdown"

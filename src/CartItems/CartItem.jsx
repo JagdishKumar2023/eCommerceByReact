@@ -49,7 +49,7 @@ export const CartItem = () => {
 
       <div className="cartitems-down">
         <div className="cartitems-total">
-          <h1>Cart Totals</h1>
+          <h1 style={{ color: "rgb(19,182,182)" }}>Cart Totals</h1>
           <div className="cartitems-total-item">
             <p>SubTotal</p>
             <b>{getTotalCartAmount()}</b>
@@ -70,7 +70,9 @@ export const CartItem = () => {
           <p>If you have a promo code, enter it here</p>
           <div className="cartitems-promobox">
             <input type="text" placeholder="Promo code" />
-            <button>Submit</button>
+            <button style={{ borderRadius: "30px", padding: "21px" }}>
+              Submit
+            </button>
           </div>
         </div>
       </div>
